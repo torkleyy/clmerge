@@ -27,10 +27,11 @@ Inside it, the following files shall be placed:
 
 * `header.md` (Optional): will be inserted at the top
 * `old.md` (Optional): will be appended at the end
-
-### Version directories
+* `config.ron` (Optional): [RON](https://github.com/ron-rs/ron) config file
 
 Every other file will be ignored.
+
+### Version directories
 
 Every directory inside `changelog` is expected to be
 [a valid `semver` version](https://semver.org/spec/v2.0.0.html) (e.g. `0.5.1`
