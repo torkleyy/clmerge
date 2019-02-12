@@ -1,0 +1,1 @@
+* Fixed bug where version where sorted in the wrong order ([#4])

@@ -82,7 +82,7 @@ fn main() {
     }
 
     let mut entries = versions.map.into_iter().map(|(_, v)| v).collect::<Vec<_>>();
-    entries.sort_by_key(|e| e.version.clone());
+    entries.sort_by(|a, b| b.version.cmp(&a.version));
 
     //dbg!(&entries);
 
