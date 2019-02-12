@@ -1,0 +1,1 @@
+* General functionality for merging changelog entries
