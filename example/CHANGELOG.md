@@ -1,3 +1,4 @@
+<!-- This file is auto-generated. Do not edit. -->
 # Changelog
 
 ## 0.1.0
@@ -14,7 +15,7 @@
 
 ### Added
 
-* Added feature baz
+* Added feature baz ([#123](https://github.com/user/repo/issues/123))
 * Added feature bar
 
 ## 0.0.0
