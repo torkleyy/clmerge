@@ -86,15 +86,26 @@ This is the old Changelog
 * Did something
 ```
 
+`config.ron`:
+
+```text
+(
+    // This will be used to insert links for `[#123]` entries
+    // `[#123]` becomes `[#123](https://github.com/user/repo/issues/123)`
+    pull_request_prefix: "https://github.com/user/repo/issues/",
+)
+```
+
 `feature-baz.md`:
 
 ```markdown
-* Added feature baz
+* Added feature baz ([#123])
 ```
 
 Output (`CHANGELOG.md`):
 
 ```markdown
+<!-- This file is auto-generated. Do not edit. -->
 # Changelog
 
 ## 0.1.0
@@ -111,7 +122,7 @@ Output (`CHANGELOG.md`):
 
 ### Added
 
-* Added feature baz
+* Added feature baz ([#123](https://github.com/user/repo/issues/123))
 * Added feature bar
 
 ## 0.0.0

@@ -3,11 +3,13 @@ use std::{ffi::OsString, path::PathBuf};
 use semver::Version;
 
 use crate::{
+    config::Config,
     cl_writer::ClWriter,
     util::{file_to_string, file_to_string_else_empty, iter_dir},
     versions::Versions,
 };
 
+mod config;
 mod cl_writer;
 #[macro_use]
 mod macros;
@@ -21,6 +23,12 @@ fn main() {
         error_exit!("No `changelog` directory");
     }
 
+    let config = Config::from_path(&changelog.join("config.ron")).unwrap_or_else(|e| {
+        println!("Could not parse `changelog/config.ron`: {}", e);
+
+        Default::default()
+    });
+
     let mut versions = Versions::new();
 
     let old = file_to_string_else_empty(&changelog.join("old.md"));
@@ -31,7 +39,7 @@ fn main() {
             continue;
         }
 
-        let file_name = version_dir.file_name();
+        let file_name: OsString = version_dir.file_name();
         let name = match file_name.to_str() {
             Some(x) => x,
             None => {
@@ -82,6 +90,7 @@ fn main() {
     writer.write_versions(&entries);
     writer.write_str(&old);
     writer.trim();
+    writer.linkify_prs(&config);
 
     if let Err(e) = writer.write_to_file("CHANGELOG.md".as_ref()) {
         error_exit!("Failed to write `CHANGELOG.md`: {}", e);

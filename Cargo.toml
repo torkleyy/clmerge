@@ -9,4 +9,7 @@ readme = "README.md"
 repository = "https://github.com/torkleyy/clmerge"
 
 [dependencies]
+regex = "1"
+ron = "0.4"
+serde = { version = "1", features = ["serde_derive"] }
 semver = "0.9.0"

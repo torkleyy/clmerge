@@ -1,1 +1,1 @@
-* Added feature baz
+* Added feature baz ([#123])

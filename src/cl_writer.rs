@@ -1,6 +1,7 @@
 use std::{collections::HashMap, fs::write, path::Path};
 
 use crate::versions::Entries;
+use crate::config::Config;
 
 pub struct ClWriter {
     buffer: String,
@@ -12,6 +13,7 @@ impl ClWriter {
             buffer: String::new(),
         };
 
+        this.write_str("<!-- This file is auto-generated. Do not edit. -->\n");
         this.write_str(header);
         this.write_str("\n");
 
@@ -59,6 +61,28 @@ impl ClWriter {
             }
 
             self.buffer.replace_range(index..exclusive_end, "\n\n");
+        }
+    }
+
+    pub fn linkify_prs(&mut self, config: &Config) {
+        let regex = regex::Regex::new(r"\[#(\d*)\]").unwrap();
+
+        let mut start = 0;
+        while let Some(m) = regex.find_at(&self.buffer, start) {
+            if config.pull_request_prefix.is_empty() {
+                eprintln!("Error: cannot replace PR link because there is no PR link prefix in `config.ron`");
+                return;
+            }
+
+            start = m.end();
+
+            let start = m.start();
+            let end = m.end();
+
+            let orig = &self.buffer[start..end];
+            let new = format!("{}({}{})", orig, &config.pull_request_prefix, &orig[2..orig.len() - 1]);
+
+            self.buffer.replace_range(start..end, &new);
         }
     }
 
