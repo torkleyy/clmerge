@@ -1,5 +1,9 @@
 # `clmerge`
 
+[![Travis status](https://img.shields.io/travis/torkleyy/clmerge.svg?style=flat-square)](https://travis-ci.org/torkleyy/clmerge)
+[![Crates.io](https://img.shields.io/crates/v/clmerge.svg?style=flat-square)](https://crates.io/clmerge)
+![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg?style=flat-square)
+
 > Opinionated, simple changelog merger
 
 Never rebase your `CHANGELOG.md` again.
