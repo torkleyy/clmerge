@@ -28,7 +28,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "clmerge"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "regex 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "ron 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
