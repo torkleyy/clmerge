@@ -1,12 +1,6 @@
 <!-- This file is auto-generated. Do not edit. -->
 # Changelog
 
-## 0.1.0
-
-### Added
-
-* General functionality for merging changelog entries
-
 ## 0.2.0
 
 ### Changed
@@ -17,6 +11,12 @@
 
 * Added feature baz ([#123](https://github.com/user/repo/issues/123))
 * Added feature bar
+
+## 0.1.0
+
+### Added
+
+* General functionality for merging changelog entries
 
 ## 0.0.0
 
